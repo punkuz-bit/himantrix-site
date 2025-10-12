@@ -71,7 +71,7 @@ a:hover{color:var(--gold)}
   align-items:center;
   text-align:center;
   overflow:hidden;
-  padding-top:60px;
+  padding-top:60px; /* small offset for sticky header overlap */
 }
 
 /* Background layers */
@@ -87,7 +87,7 @@ a:hover{color:var(--gold)}
   top:0;left:0;
   width:100%;height:100%;
   object-fit:cover;
-  z-index:-1;
+  z-index:-1; /* above fallback image, below overlay/content */
 }
 .hero::after{
   content:'';
@@ -103,14 +103,14 @@ a:hover{color:var(--gold)}
   padding:0 16px;
 }
 
-/* Logo — smaller, lifted, rounded */
+/* Logo — responsive size with clamp(), rounded, lifted */
 .hero-logo{
-  height:90px;
+  height:clamp(100px, 12vw, 160px); /* min 100px, grows with viewport, max 160px */
   width:auto;
-  margin-bottom:18px;
-  border-radius:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.25);
-  transform:translateY(-40px);
+  margin-bottom:20px;
+  border-radius:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  transform:translateY(-30px);
   animation:fadeInUp 1.4s ease forwards;
 }
 
@@ -209,9 +209,9 @@ iframe{
   .contact-wrap{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  #bg-video{display:none}
-  .hero-logo{height:70px;transform:none}
+  #bg-video{display:none} /* save data/battery on small screens */
   .hero{padding-top:100px}
+  .hero-logo{transform:none} /* keep centered on small screens */
 }
 
 /* ============ SERVICES PAGE (optional) ============ */
