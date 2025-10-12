@@ -1,8 +1,8 @@
-
 :root{
   --indigo:#0E1F3B; --midnight:#1A2A6C; --gold:#D7A84A; --off:#F6F7FB; --text:#101624;
   --radius:16px; --shadow:0 12px 30px rgba(0,0,0,.18);
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;scroll-behavior:smooth}
 body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--off);line-height:1.65}
@@ -13,116 +13,178 @@ a{color:var(--midnight);text-decoration:none} a:hover{color:var(--gold)}
 .btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700}
 .btn.primary{background:var(--gold);color:var(--indigo);box-shadow:var(--shadow)}
 .btn.ghost{border:2px solid var(--gold);color:var(--gold)}
+
 .header{position:sticky;top:0;z-index:50;background:rgba(14,31,59,.7);backdrop-filter:blur(8px)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0;color:#fff}
 .nav .brand{display:flex;align-items:center;gap:10px;color:#fff}
 .nav img{height:34px;width:auto}
 .nav a{color:#fff;opacity:.9;margin-left:16px}
-.hero{position:relative;color:#fff;min-height:80vh;display:grid;place-items:center;text-align:center}
-.hero::before{content:'';position:absolute;inset:0;background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;filter:saturate(1.05)}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(14,31,59,.6))}
-.hero > .inner{position:relative;z-index:1;padding:80px 0}
+
+/* =========================
+   HERO — VIDEO BACKGROUND
+   ========================= */
+.hero{
+  position:relative;
+  color:#fff;
+  min-height:100vh;               /* fill viewport */
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;                 /* crop video edges */
+}
+
+/* Remove old image layer (we’ll use it only as fallback) */
+/* .hero::before was the static background image */
+
+/* Dark overlay for readability */
+.hero::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(14,31,59,.6));
+  z-index:1;
+}
+
+/* Background video */
+#bg-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:0;                       /* behind overlay/content */
+}
+
+/* Content above overlay/video */
+.hero > .inner{
+  position:relative;
+  z-index:2;                       /* above overlay */
+  padding:80px 0;
+}
+
 .hero h1{font-size:clamp(36px,6vw,64px)}
 .hero p.sub{opacity:.95;font-size:clamp(16px,2.2vw,20px)}
 .hero .cta{margin-top:16px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ====== FALLBACKS ====== */
+/* 1) Reduced motion prefers static image */
+@media (prefers-reduced-motion: reduce){
+  #bg-video{display:none}
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+    filter:saturate(1.05);
+    z-index:0;
+  }
+}
+
+/* 2) Small screens: hide video, show image (saves data/battery) */
+@media (max-width:640px){
+  #bg-video{display:none}
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+    filter:saturate(1.05);
+    z-index:0;
+  }
+}
+
+/* 3) Manual override: add class="no-video" to <body> to force fallback */
+.no-video #bg-video{display:none}
+.no-video .hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+  filter:saturate(1.05);
+  z-index:0;
+}
+
+/* =========================
+   BOOKS
+   ========================= */
 .grid-books{display:grid;gap:26px;grid-template-columns:repeat(4,1fr)}
 .book{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:16px;box-shadow:var(--shadow);text-align:center}
 .book img{border-radius:12px;width:100%;height:auto}
 .book h4{margin:10px 0 6px 0}
 .book .actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 .badge{display:inline-block;background:rgba(215,168,74,.12);color:#7a5a1c;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+/* =========================
+   CONTACT
+   ========================= */
 .contact-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
 iframe{width:100%;height:520px;border:0;background:#fff;border-radius:14px;box-shadow:var(--shadow)}
+
+/* =========================
+   FOOTER
+   ========================= */
 .footer{background:var(--indigo);color:#fff;padding:20px 0}
 .footer .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width:980px){
   .grid-books{grid-template-columns:repeat(2,1fr)}
   .contact-wrap{grid-template-columns:1fr}
 }
-/* Services section (dark gradient panel) */
+
+/* =========================
+   SERVICES (separate page/section)
+   ========================= */
 .services {
   background: linear-gradient(180deg, rgba(14,31,59,0.95), rgba(26,42,108,0.90));
   color: #fff;
 }
+.services-hero { text-align: center; max-width: 900px; margin: 0 auto 28px; }
+.services-hero h2 { font-size: clamp(28px, 3.8vw, 44px); margin-bottom: 8px; }
+.services-hero .lead { opacity: 0.95; }
 
-/* Services hero */
-.services-hero {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 28px;
-}
-.services-hero h2 {
-  font-size: clamp(28px, 3.8vw, 44px);
-  margin-bottom: 8px;
-}
-.services-hero .lead {
-  opacity: 0.95;
-}
-
-/* Simple grids */
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
-/* Feature cards on dark bg */
-.services .card {
+.services .card{
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius);
   padding: 20px;
   box-shadow: var(--shadow);
 }
-.services .card h3, .services .card h4 {
-  color: #fff;
-}
-.services .card p, .services .card li {
-  color: #e9eef6;
-}
+.services .card h3, .services .card h4 { color:#fff; }
+.services .card p, .services .card li { color:#e9eef6; }
 
-/* Packages */
 .packages { margin-top: 34px; }
 .packages .center { text-align: center; margin-bottom: 12px; }
-.pack { display: flex; flex-direction: column; gap: 12px; }
-.pack-h {
-  font-weight: 800; letter-spacing: .3px;
-  color: var(--gold);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-  padding-bottom: 8px;
+.pack { display:flex; flex-direction:column; gap:12px; }
+.pack-h{
+  font-weight:800; letter-spacing:.3px; color:var(--gold);
+  border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:8px;
 }
-.pack-list { margin: 0; padding-left: 18px; }
-.pack-list li { margin: 6px 0; }
-.price {
-  font-weight: 800; font-size: 1.1rem;
-  color: #fff;
-}
-.pack-featured {
-  outline: 2px solid var(--gold);
-  box-shadow: 0 12px 30px rgba(215,168,74,.2);
-}
+.pack-list{ margin:0; padding-left:18px; }
+.pack-list li{ margin:6px 0; }
+.price{ font-weight:800; font-size:1.1rem; color:#fff; }
+.pack-featured{ outline:2px solid var(--gold); box-shadow:0 12px 30px rgba(215,168,74,.2); }
 
-/* Process */
-.process { margin-top: 36px; }
-.process .center { text-align: center; margin-bottom: 12px; }
-.step { position: relative; padding-top: 18px; }
-.step .num {
-  position: absolute; top: -14px; left: -14px;
+.process{ margin-top:36px; }
+.process .center{ text-align:center; margin-bottom:12px; }
+.step{ position:relative; padding-top:18px; }
+.step .num{
+  position:absolute; top:-14px; left:-14px;
   background: var(--gold); color: var(--indigo);
-  width: 32px; height: 32px; border-radius: 50%;
-  display: inline-grid; place-items: center; font-weight: 800;
+  width:32px; height:32px; border-radius:50%;
+  display:inline-grid; place-items:center; font-weight:800;
 }
 
-/* Buttons on dark */
 .services .btn.primary { background: var(--gold); color: var(--indigo); }
-.services .btn.ghost { border-color: var(--gold); color: var(--gold); }
+.services .btn.ghost   { border-color: var(--gold); color: var(--gold); }
 
-/* Responsive */
+/* Services page nav highlight */
+nav a[href="services.html"]{ color: var(--gold); font-weight:600; }
+
+/* Responsive adjustments for services grids */
 @media (max-width: 980px) {
   .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
   .grid-4 { grid-template-columns: 1fr; }
-}
-nav a[href="services.html"] {
-  color: var(--gold);
-  font-weight: 600;
 }
