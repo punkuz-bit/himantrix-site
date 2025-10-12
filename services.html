@@ -6,180 +6,154 @@
   <title>HiMantrix — eBook Design & Publishing Services</title>
   <meta name="description" content="End-to-end eBook design, formatting, conversion, and publishing support for authors. Kindle, Apple Books, EPUB, PDF." />
 
-  <!-- OG / Twitter (optional but nice) -->
+  <!-- OG / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://himantrix.com/services.html" />
   <meta property="og:title" content="HiMantrix — eBook Design & Publishing Services" />
   <meta property="og:description" content="From manuscript to store-ready eBook. Design, formatting, and publishing on Kindle & Apple Books." />
   <meta property="og:image" content="https://himantrix.com/assets/himantrix-og.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://himantrix.com/services.html" />
   <meta name="twitter:title" content="HiMantrix — eBook Design & Publishing Services" />
   <meta name="twitter:description" content="From manuscript to store-ready eBook. Design, formatting, and publishing on Kindle & Apple Books." />
   <meta name="twitter:image" content="https://himantrix.com/assets/himantrix-og.png" />
 
-  <!-- Favicons -->
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
 
-  <!-- Fonts & site CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Only tiny brand overrides inline -->
-  <style>
-    .brand strong, .footer-brand strong { font-family: Montserrat, Inter, Arial, sans-serif; font-weight: 800; font-size: 1.2rem; }
-    .hi { color: #0E1F3B; } .mantrix { color: #D7A84A; }
-    .header .hi, .footer .hi { color: #FFFFFF; } /* white on dark header/footer */
-
-    /* Section backgrounds & layout specific to this page */
-    .services { background: linear-gradient(180deg, rgba(14,31,59,0.95), rgba(26,42,108,0.90)); color:#fff; padding:80px 0; }
-    .services-top { padding: 64px 0 16px; background: linear-gradient(180deg, rgba(14,31,59,0.75), rgba(26,42,108,0.75)); color:#fff; }
-    .services-hero { text-align:center; max-width:900px; margin:0 auto 28px; }
-    .services-hero h1 { font-size: clamp(28px, 3.8vw, 44px); margin-bottom: 8px; color:#fff; }
-    .services-hero .lead { color:#e9eef6; opacity:.95; }
-
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-
-    .services .card { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding:20px; box-shadow: var(--shadow); }
-    .services .card h3, .services .card h4 { color:#fff; }
-    .services .card p, .services .card li { color:#e9eef6; }
-
-    .packages { margin-top:34px; }
-    .packages .center { text-align:center; margin-bottom:12px; color:#fff; }
-    .pack { display:flex; flex-direction:column; gap:12px; }
-    .pack-h { font-weight:800; letter-spacing:.3px; color: var(--gold); border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:8px; }
-    .pack-list { margin:0; padding-left:18px; } .pack-list li { margin:6px 0; }
-    .price { font-weight:800; font-size:1.1rem; color:#fff; }
-    .pack-featured { outline:2px solid var(--gold); box-shadow:0 12px 30px rgba(215,168,74,.2); }
-
-    .process { margin-top:36px; }
-    .process .center { text-align:center; margin-bottom:12px; color:#fff; }
-    .step { position:relative; padding-top:18px; }
-    .step .num { position:absolute; top:-14px; left:-14px; background: var(--gold); color: var(--indigo); width:32px; height:32px; border-radius:50%; display:inline-grid; place-items:center; font-weight:800; }
-
-    .services .btn.primary { background: var(--gold); color: var(--indigo); }
-    .services .btn.ghost { border-color: var(--gold); color: var(--gold); }
-
-    @media (max-width:980px){ .grid-3{grid-template-columns:1fr} .grid-4{grid-template-columns:1fr 1fr} }
-    @media (max-width:640px){ .grid-4{grid-template-columns:1fr} }
-  </style>
 </head>
 <body>
-<video class="bg" autoplay muted loop playsinline>
-  <source src="assets/homebg1.mp4" type="video/mp4">
-</video>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html#top">
-      <img src="assets/himantrix-logo.png" alt="HiMantrix logo" />
-      <strong><span class="hi">Hi</span><span class="mantrix">Mantrix</span></strong>
-    </a>
-    <nav>
-      <a href="index.html#publishing">Books</a>
-      <a href="services.html">Services</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
 
-<section class="services-top">
-  <div class="container services-hero">
-    <h1>eBook Design & Publishing</h1>
-    <p class="lead">Turn your manuscript into a professional, platform-ready eBook. We design, format, convert, and help publish on Kindle and Apple Books.</p>
-    <div class="cta" style="margin-top:12px">
+  <!-- Sticky header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html#top">
+        <img src="assets/himantrix-logo.png" alt="HiMantrix logo" />
+        <strong><span class="hi" style="color:#fff">Hi</span><span class="mantrix" style="color:#D7A84A">Mantrix</span></strong>
+      </a>
+      <nav>
+        <a href="index.html#publishing">Books</a>
+        <a href="services.html">Services</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO (services hero with background video) -->
+  <section class="services-hero-block" aria-label="Services Hero">
+    <video class="bg" autoplay muted loop playsinline poster="assets/A_digital_painting_or_illustration_in_a_blend_of_s.png">
+      <source src="assets/homebg1.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay"></div>
+
+    <div class="inner container">
+      <h1 class="services-hero-title">eBook Design & Publishing</h1>
+      <p class="services-hero-sub">
+        From manuscript to store-ready eBooks. We design, format, convert, and help publish on Kindle and Apple Books.
+      </p>
       <a class="btn primary" href="index.html#contact">Get a Free Quote</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="services">
-  <div class="container">
-    <div class="grid-3 features">
-      <div class="card">
-        <h3>Design & Readability</h3>
-        <p>Clean typography, smart hierarchy, clickable TOC, device-tested layouts.</p>
-      </div>
-      <div class="card">
-        <h3>Multi-Format Files</h3>
-        <p>Delivery in EPUB + Kindle formats (and PDF if needed), ready for KDP/Apple Books.</p>
-      </div>
-      <div class="card">
-        <h3>End-to-End Help</h3>
-        <p>Metadata, categories/keywords, upload support, and polished cover design.</p>
-      </div>
-    </div>
+  <!-- SERVICES CONTENT -->
+  <section class="services">
+    <div class="container">
 
-    <div class="packages">
-      <h3 class="center">Packages</h3>
-      <div class="grid-3">
-        <div class="card pack">
-          <div class="pack-h">Starter</div>
-          <ul class="pack-list">
-            <li>Interior layout (text-only)</li>
-            <li>Front cover design</li>
-            <li>EPUB + Kindle output</li>
-            <li>Author proof</li>
-          </ul>
-          <div class="price">$250 – $450</div>
-          <a class="btn ghost" href="index.html#contact">Enquire</a>
+      <!-- Why choose us -->
+      <div class="grid-3 features">
+        <div class="card">
+          <h3>Design & Readability</h3>
+          <p>Clean typography, smart hierarchy, clickable TOC, device-tested layouts.</p>
         </div>
-
-        <div class="card pack pack-featured">
-          <div class="pack-h">Professional</div>
-          <ul class="pack-list">
-            <li>Full interior (with images)</li>
-            <li>Front + spine + back cover</li>
-            <li>Metadata & SEO setup</li>
-            <li>KDP & Apple upload assistance</li>
-          </ul>
-          <div class="price">$650 – $900</div>
-          <a class="btn primary" href="index.html#contact">Start Project</a>
+        <div class="card">
+          <h3>Multi-Format Files</h3>
+          <p>EPUB + Kindle formats (and PDF if needed), ready for KDP/Apple Books.</p>
         </div>
-
-        <div class="card pack">
-          <div class="pack-h">Signature</div>
-          <ul class="pack-list">
-            <li>Everything in Professional</li>
-            <li>PDF + social promo assets</li>
-            <li>Post-launch update (1 round)</li>
-            <li>Priority support</li>
-          </ul>
-          <div class="price">$1,100 – $1,500+</div>
-          <a class="btn ghost" href="index.html#contact">Enquire</a>
+        <div class="card">
+          <h3>End-to-End Help</h3>
+          <p>Metadata, categories/keywords, upload support, and polished cover design.</p>
         </div>
       </div>
-    </div>
 
-    <div class="process">
-      <h3 class="center">How It Works</h3>
-      <div class="grid-4">
-        <div class="step card"><span class="num">1</span><h4>Submit</h4><p>Share manuscript + goals. We scope timelines and deliverables.</p></div>
-        <div class="step card"><span class="num">2</span><h4>Design</h4><p>Cover concepts + interior styleproof for your review.</p></div>
-        <div class="step card"><span class="num">3</span><h4>Format</h4><p>Conversion to EPUB/Kindle (and PDF), device testing, QC.</p></div>
-        <div class="step card"><span class="num">4</span><h4>Publish</h4><p>Upload support for KDP/Apple; final files & assets delivered.</p></div>
+      <!-- Packages -->
+      <div class="packages">
+        <h3 class="center">Packages</h3>
+        <div class="grid-3">
+          <div class="card pack">
+            <div class="pack-h">Starter</div>
+            <ul class="pack-list">
+              <li>Interior layout (text-only)</li>
+              <li>Front cover design</li>
+              <li>EPUB + Kindle output</li>
+              <li>Author proof</li>
+            </ul>
+            <div class="price">$250 – $450</div>
+            <a class="btn ghost" href="index.html#contact">Enquire</a>
+          </div>
+
+          <div class="card pack pack-featured">
+            <div class="pack-h">Professional</div>
+            <ul class="pack-list">
+              <li>Full interior (with images)</li>
+              <li>Front + spine + back cover</li>
+              <li>Metadata & SEO setup</li>
+              <li>KDP & Apple upload assistance</li>
+            </ul>
+            <div class="price">$650 – $900</div>
+            <a class="btn primary" href="index.html#contact">Start Project</a>
+          </div>
+
+          <div class="card pack">
+            <div class="pack-h">Signature</div>
+            <ul class="pack-list">
+              <li>Everything in Professional</li>
+              <li>PDF + social promo assets</li>
+              <li>Post-launch update (1 round)</li>
+              <li>Priority support</li>
+            </ul>
+            <div class="price">$1,100 – $1,500+</div>
+            <a class="btn ghost" href="index.html#contact">Enquire</a>
+          </div>
+        </div>
       </div>
-      <div class="center" style="margin-top:18px">
-        <a class="btn primary" href="index.html#contact">Get a Free Quote</a>
+
+      <!-- Process -->
+      <div class="process">
+        <h3 class="center">How It Works</h3>
+        <div class="grid-4">
+          <div class="step card"><span class="num">1</span><h4>Submit</h4><p>Share manuscript + goals. We scope timelines and deliverables.</p></div>
+          <div class="step card"><span class="num">2</span><h4>Design</h4><p>Cover concepts + interior styleproof for your review.</p></div>
+          <div class="step card"><span class="num">3</span><h4>Format</h4><p>Conversion to EPUB/Kindle (and PDF), device testing, QC.</p></div>
+          <div class="step card"><span class="num">4</span><h4>Publish</h4><p>Upload support for KDP/Apple; final files & assets delivered.</p></div>
+        </div>
+        <div class="center" style="margin-top:18px">
+          <a class="btn primary" href="index.html#contact">Get a Free Quote</a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<footer class="footer">
-  <div class="container row">
-    <div class="footer-brand">
-      <img src="assets/himantrix-logo.png" alt="" />
-      <strong><span class="hi">Hi</span><span class="mantrix">Mantrix</span></strong>
     </div>
-    <small>© HiMantrix Publishing</small>
-  </div>
-</footer>
+  </section>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container row">
+      <div class="footer-brand">
+        <img src="assets/himantrix-logo.png" alt="" style="height:28px;width:auto;border-radius:8px" />
+        <strong><span class="hi" style="color:#fff">Hi</span><span class="mantrix" style="color:#D7A84A">Mantrix</span></strong>
+      </div>
+      <small>© HiMantrix Publishing</small>
+    </div>
+  </footer>
+
+  <script>
+    // If the video loads, we could add a class for future effects (optional)
+    document.querySelector('.services-hero-block video.bg')
+      ?.addEventListener('loadeddata', ()=>document.querySelector('.services-hero-block')?.classList.add('video-ready'));
+  </script>
 </body>
 </html>
