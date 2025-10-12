@@ -122,3 +122,7 @@ iframe{width:100%;height:520px;border:0;background:#fff;border-radius:14px;box-s
 @media (max-width: 640px) {
   .grid-4 { grid-template-columns: 1fr; }
 }
+nav a[href="services.html"] {
+  color: var(--gold);
+  font-weight: 600;
+}
