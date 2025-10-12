@@ -340,3 +340,67 @@ nav a[href="services.html"]{color:var(--gold);font-weight:600;}
 @media (max-width:640px){
   .grid-4{grid-template-columns:1fr;}
 }
+
+/* ===== Services Hero (full-width, video background like home) ===== */
+.services-hero-block{
+  position:relative;
+  min-height:60vh;               /* hero height on services page */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+  padding:72px 0 56px;           /* space for sticky header + breathing room */
+}
+
+/* Background video INSIDE the hero only */
+.services-hero-block > video.bg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 15%;    /* match home framing */
+  z-index:-2;                    /* deepest layer inside hero */
+}
+
+/* Static image fallback behind video */
+.services-hero-block::before{
+  content:"";
+  position:absolute; inset:0;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center 15% / cover no-repeat;
+  filter:saturate(1.05) brightness(.9);
+  z-index:-3;
+}
+
+/* Gradient overlay for readability */
+.services-hero-block .overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(14,31,59,.6));
+  z-index:-1;
+}
+
+/* Hero inner (text/buttons) */
+.services-hero-block .inner{
+  position:relative;
+  z-index:1;
+  padding:0 16px;
+  max-width:900px;
+}
+.services-hero-title{
+  font-size:clamp(32px, 4.4vw, 56px);
+  margin:0 0 8px 0;
+  animation:fadeInUp 1.2s ease forwards;
+}
+.services-hero-sub{
+  font-size:clamp(16px, 2.1vw, 20px);
+  opacity:.95;
+  margin:0 0 14px 0;
+  animation:fadeInUp 1.2s ease forwards;
+  animation-delay:.2s;
+}
+.services-hero-block .btn{
+  animation:fadeInUp 1.2s ease forwards;
+  animation-delay:.4s;
+}
+
+/* Below-hero content keeps existing .services styles */
