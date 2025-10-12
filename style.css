@@ -214,30 +214,81 @@ iframe{
   .hero-logo{transform:none} /* keep centered on small screens */
 }
 
-/* ============ SERVICES PAGE (optional) ============ */
+/* ============ SERVICES PAGE — MATCH HOME STYLE ============ */
 .services{
-  background:linear-gradient(180deg,rgba(14,31,59,0.95),rgba(26,42,108,0.90));
+  position:relative;
   color:#fff;
+  min-height:100vh;
+  padding:80px 0;
+  overflow:hidden;
+  background:linear-gradient(180deg,rgba(14,31,59,0.95),rgba(26,42,108,0.90));
 }
-.services-hero{text-align:center;max-width:900px;margin:0 auto 28px;}
-.services-hero h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:8px;}
-.services-hero .lead{opacity:0.95;}
 
+/* Background image layer */
+.services::before{
+  content:"";
+  position:absolute; inset:0;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+  filter:saturate(1.05) brightness(0.9);
+  z-index:-2;
+}
+
+/* Optional video background on services page
+   (add <video class="bg" ...> inside services.html body if you want) */
+.services video.bg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:.45; /* subdued so text is readable */
+}
+
+/* Dark overlay */
+.services::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.4), rgba(14,31,59,.7));
+  z-index:-1;
+}
+
+/* Services content */
+.services-hero{
+  position:relative;
+  text-align:center;
+  max-width:900px;
+  margin:0 auto 28px;
+  z-index:1;
+  animation:fadeInUp 1.2s ease forwards;
+}
+.services-hero h2{
+  font-size:clamp(28px,3.8vw,44px);
+  margin-bottom:8px;
+}
+.services-hero .lead{
+  opacity:.95;
+}
+
+/* Grids reused */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
 
+/* Cards on dark */
 .services .card{
-  background:rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.07);
   border:1px solid rgba(255,255,255,0.12);
   border-radius:var(--radius);
   padding:20px;
   box-shadow:var(--shadow);
-  transition:transform .3s ease;
+  transition:transform .3s ease, box-shadow .3s ease;
 }
-.services .card:hover{transform:translateY(-6px)}
+.services .card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 36px rgba(0,0,0,.28);
+}
 .services .card h3,.services .card h4{color:#fff;}
 .services .card p,.services .card li{color:#e9eef6;}
 
+/* Packages */
 .packages{margin-top:34px;}
 .packages .center{text-align:center;margin-bottom:12px;}
 .pack{display:flex;flex-direction:column;gap:12px;}
@@ -254,25 +305,23 @@ iframe{
   box-shadow:0 12px 30px rgba(215,168,74,.2);
 }
 
+/* Process */
 .process{margin-top:36px;}
 .process .center{text-align:center;margin-bottom:12px;}
 .step{position:relative;padding-top:18px;}
 .step .num{
-  position:absolute;
-  top:-14px;left:-14px;
-  background:var(--gold);
-  color:var(--indigo);
-  width:32px;height:32px;
-  border-radius:50%;
-  display:inline-grid;
-  place-items:center;
-  font-weight:800;
+  position:absolute; top:-14px; left:-14px;
+  background:var(--gold); color:var(--indigo);
+  width:32px; height:32px; border-radius:50%;
+  display:inline-grid; place-items:center; font-weight:800;
 }
 
+/* Buttons on dark */
 .services .btn.primary{background:var(--gold);color:var(--indigo);}
 .services .btn.ghost{border-color:var(--gold);color:var(--gold);}
 nav a[href="services.html"]{color:var(--gold);font-weight:600;}
 
+/* Responsive services grids */
 @media (max-width:980px){
   .grid-3{grid-template-columns:1fr;}
   .grid-4{grid-template-columns:1fr 1fr;}
