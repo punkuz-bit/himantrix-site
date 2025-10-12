@@ -21,82 +21,72 @@ a{color:var(--midnight);text-decoration:none} a:hover{color:var(--gold)}
 .nav a{color:#fff;opacity:.9;margin-left:16px}
 
 /* =========================
-   HERO — VIDEO BACKGROUND
+   HERO — VIDEO BACKGROUND (FIXED)
    ========================= */
 .hero{
   position:relative;
   color:#fff;
-  min-height:100vh;               /* fill viewport */
-  display:grid;
-  place-items:center;
+  min-height:100vh;                 /* fill viewport */
+  display:flex;                     /* center vertically */
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  overflow:hidden;                 /* crop video edges */
+  overflow:hidden;                  /* crop video edges */
 }
 
-/* Remove old image layer (we’ll use it only as fallback) */
-/* .hero::before was the static background image */
+/* Fallback image layer (always behind video) */
+.hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+  filter:saturate(1.05);
+  z-index:-2;                       /* furthest back */
+}
+
+/* Background video (above fallback) */
+#bg-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-1;                       /* behind overlay/content, above fallback */
+}
 
 /* Dark overlay for readability */
 .hero::after{
   content:'';
   position:absolute; inset:0;
   background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(14,31,59,.6));
-  z-index:1;
-}
-
-/* Background video */
-#bg-video{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  z-index:0;                       /* behind overlay/content */
+  z-index:0;
 }
 
 /* Content above overlay/video */
 .hero > .inner{
   position:relative;
-  z-index:2;                       /* above overlay */
-  padding:80px 0;
+  z-index:1;                        /* above overlay */
+  padding:0 16px;                   /* remove vertical padding so content is centered */
 }
 
 .hero h1{font-size:clamp(36px,6vw,64px)}
 .hero p.sub{opacity:.95;font-size:clamp(16px,2.2vw,20px)}
 .hero .cta{margin-top:16px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* ====== FALLBACKS ====== */
-/* 1) Reduced motion prefers static image */
-@media (prefers-reduced-motion: reduce){
-  #bg-video{display:none}
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
-    filter:saturate(1.05);
-    z-index:0;
-  }
+/* Logo in hero: bigger & visible without scrolling */
+.hero-logo{
+  height:120px;                     /* increase size */
+  width:auto;
+  margin-bottom:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  border-radius:12px;
 }
 
-/* 2) Small screens: hide video, show image (saves data/battery) */
+/* Mobile: save data/battery — use static image */
 @media (max-width:640px){
   #bg-video{display:none}
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
-    filter:saturate(1.05);
-    z-index:0;
-  }
 }
 
-/* 3) Manual override: add class="no-video" to <body> to force fallback */
+/* Manual override: add class="no-video" on <body> to force image fallback */
 .no-video #bg-video{display:none}
-.no-video .hero::before{
-  content:'';
-  position:absolute; inset:0;
-  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
-  filter:saturate(1.05);
-  z-index:0;
-}
 
 /* =========================
    BOOKS
