@@ -60,7 +60,7 @@ a:hover{color:var(--gold)}
 .nav a{color:#fff;opacity:.9;margin-left:16px;transition:.3s}
 .nav a:hover{opacity:1;color:var(--gold)}
 
-/* ============ HERO SECTION ============ */
+/* ============ HERO SECTION (HOME) ============ */
 .hero{
   position:relative;
   color:#fff;
@@ -78,7 +78,7 @@ a:hover{color:var(--gold)}
 .hero::before{
   content:'';
   position:absolute;inset:0;
-  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center 15% / cover no-repeat; /* show more top */
   filter:saturate(1.05);
   z-index:-2;
 }
@@ -87,6 +87,7 @@ a:hover{color:var(--gold)}
   top:0;left:0;
   width:100%;height:100%;
   object-fit:cover;
+  object-position:center 15%; /* show more top */
   z-index:-1; /* above fallback image, below overlay/content */
 }
 .hero::after{
@@ -101,6 +102,17 @@ a:hover{color:var(--gold)}
   position:relative;
   z-index:1;
   padding:0 16px;
+}
+
+/* Lift content slightly on laptops/desktops so logo stays visible */
+@media (min-width:981px){
+  .hero > .inner{ transform:translateY(-4vh); }
+  .hero{ padding-top:48px; } /* was 60px */
+}
+
+/* Mobile safe viewport units to prevent crop on mobile toolbars */
+@supports (height: 100svh){
+  .hero{ min-height:100svh; }
 }
 
 /* Logo — responsive size with clamp(), rounded, lifted */
@@ -203,7 +215,7 @@ iframe{
   flex-wrap:wrap;
 }
 
-/* ============ RESPONSIVE ============ */
+/* ============ RESPONSIVE (global) ============ */
 @media (max-width:980px){
   .grid-books{grid-template-columns:repeat(2,1fr)}
   .contact-wrap{grid-template-columns:1fr}
@@ -228,7 +240,7 @@ iframe{
 .services::before{
   content:"";
   position:absolute; inset:0;
-  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center/cover no-repeat;
+  background:url('assets/A_digital_painting_or_illustration_in_a_blend_of_s.png') center 15% / cover no-repeat; /* match home framing */
   filter:saturate(1.05) brightness(0.9);
   z-index:-2;
 }
@@ -239,6 +251,7 @@ iframe{
   position:absolute; inset:0;
   width:100%; height:100%;
   object-fit:cover;
+  object-position:center 15%;
   z-index:-1;
   opacity:.45; /* subdued so text is readable */
 }
@@ -264,9 +277,7 @@ iframe{
   font-size:clamp(28px,3.8vw,44px);
   margin-bottom:8px;
 }
-.services-hero .lead{
-  opacity:.95;
-}
+.services-hero .lead{ opacity:.95; }
 
 /* Grids reused */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
@@ -311,7 +322,7 @@ iframe{
 .step{position:relative;padding-top:18px;}
 .step .num{
   position:absolute; top:-14px; left:-14px;
-  background:var(--gold); color:var(--indigo);
+  background: var(--gold); color: var(--indigo);
   width:32px; height:32px; border-radius:50%;
   display:inline-grid; place-items:center; font-weight:800;
 }
